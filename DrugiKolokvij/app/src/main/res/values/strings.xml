@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DrugiKolokvij</string>
+    <string name="add_new_contact">Add</string>
+    <string name="title_activity_my_content_provider">MyContentProvider</string>
+</resources>
