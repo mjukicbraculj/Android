@@ -32,6 +32,32 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void SendSMSClick(View view){
+        Intent i = new Intent(this, SendSMSActivity.class);
+        startActivity(i);
+    }
 
+    public void SendMailClick(View view){
+        Intent i = new Intent(this, SendMailActivity.class);
+        startActivity(i);
+    }
 
+    public void HttpClick(View view){
+        Intent i = new Intent(this, HttpConnectionActivity.class);
+        startActivity(i);
+    }
+
+    public void ServiceClick(View view){
+        Intent i = new Intent(this, ServiceActivity.class);
+        startActivity(i);
+    }
+
+    public void NotificationClick(View view){
+        Intent i = new Intent(this, NotificationActivity.class);
+        startActivity(i);
+    }
+
+    public void ShowMapClick(View view){
+        startActivity(new Intent(this, MapsActivity.class));
+    }
 }

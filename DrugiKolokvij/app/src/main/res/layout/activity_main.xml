@@ -29,4 +29,40 @@
         android:text="my_Content_Provider"
         android:onClick="MyContentProviderClick"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sending SMS"
+        android:onClick="SendSMSClick"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sending mail"
+        android:onClick="SendMailClick"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="http_connection"
+        android:onClick="HttpClick"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Service"
+        android:onClick="ServiceClick"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notifications"
+        android:onClick="NotificationClick"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="google maps"
+        android:onClick="ShowMapClick"/>
+
 </LinearLayout>
