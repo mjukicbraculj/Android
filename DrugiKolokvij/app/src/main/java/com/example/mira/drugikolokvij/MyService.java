@@ -1,5 +1,8 @@
 package com.example.mira.drugikolokvij;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -22,6 +25,8 @@ public class MyService extends Service {
 
     static final int UPDATE_INTERVAL = 1000;
     private Timer timer = new Timer();
+    int notificationID= 1;
+
     // do tuda za timer
 
 
@@ -56,13 +61,20 @@ public class MyService extends Service {
         timer.scheduleAtFixedRate( new TimerTask() {
             public void run() {
                 Log.d("MyService", String.valueOf(++counter));
+                if(counter == 5) {
+                    onDestroy();
+                }
             }
         }, 0, UPDATE_INTERVAL);
+
     }
 
     @Override
     public void onDestroy() {
+
         super.onDestroy();
+
+        displayNotification();
 
         //za timer
         if (timer != null){
@@ -70,6 +82,41 @@ public class MyService extends Service {
 
         }
 
-        Toast.makeText(this, "Service Destroyed", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Service Destroyed", Toast.LENGTH_LONG).show();
     }
+
+    protected void displayNotification()
+    {
+        //---PendingIntent to launch activity if the user selects
+        // this notification---
+        Log.d("MYSERVICE", "display notification from serivce!");
+        Intent i = new Intent(this, NotificationView.class);
+
+        i.putExtra("notificationID", notificationID);
+
+
+        PendingIntent pendingIntent =
+                PendingIntent.getActivity(getApplicationContext(), 0, i, 0);
+
+        long[] vibrate = new long[] { 100, 250, 100, 500};
+
+        NotificationManager nm = (NotificationManager)
+                getSystemService(NOTIFICATION_SERVICE);
+
+
+        Notification notif = new Notification.Builder(this)
+                .setTicker("Reminder: meeting starts in 5 minutes")
+                .setContentTitle("Meeting with customer at 3pm...")
+                .setContentText("this is the second row")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setWhen(System.currentTimeMillis())
+                .setShowWhen(true)
+                .setContentIntent(pendingIntent)
+                .setVibrate(vibrate)
+                .build();
+
+
+        nm.notify(notificationID, notif);
+    }
+
 }

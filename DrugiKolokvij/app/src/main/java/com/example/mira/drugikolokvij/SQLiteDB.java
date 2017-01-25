@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -78,4 +79,22 @@ public class SQLiteDB extends ListActivity {
         //TODO write selected person's mail
     }
 
+    public void SearchDBClick(View view){
+        db.open();
+        Cursor c = db.searchContacts(((EditText)findViewById(R.id.serachTextEdit)).getText().toString());
+        ArrayList<String> findedPeopleArray = new ArrayList<>();
+        if(c.moveToFirst()){
+            do{
+                findedPeopleArray.add(c.getString(0));
+            }while(c.moveToNext());
+        }
+        String[] findedPeople = new String[findedPeopleArray.size()];
+        findedPeople = findedPeopleArray.toArray(findedPeople);
+        Bundle b = new Bundle();
+        b.putStringArray("data", findedPeople);
+        Intent i = new Intent(this, PeopleListActivity.class);
+        i.putExtras(b);
+        startActivity(i);
+
+    }
 }

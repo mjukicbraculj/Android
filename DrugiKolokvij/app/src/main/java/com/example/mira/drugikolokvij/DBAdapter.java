@@ -132,5 +132,12 @@ public class DBAdapter {
         return db.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
     }
 
+    public Cursor searchContacts(String searchString){
+        Cursor mCursor = db.query(DATABASE_TABLE,new String[]{KEY_NAME}, KEY_NAME + " LIKE ? || '%'", new String[]{searchString}, null, null, null);
+        if(mCursor != null)
+            mCursor.moveToFirst();
+        return mCursor;
+    }
+
 
 }

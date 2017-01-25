@@ -26,6 +26,21 @@
             android:text="Delete"
             android:onClick="deleteClick"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/serachTextEdit"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="search"
+            android:onClick="SearchDBClick"/>
+    </LinearLayout>
 
     <ListView
         android:layout_width="match_parent"

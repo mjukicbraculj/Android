@@ -11,11 +11,12 @@ public class NotificationActivity extends AppCompatActivity {
 
     int notificationID= 1;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
-        displayNotification();
+        startService(new Intent(getBaseContext(), MyService.class));
     }
 
 
